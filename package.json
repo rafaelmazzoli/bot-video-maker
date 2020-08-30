@@ -1,0 +1,23 @@
+{
+  "name": "bot-video-maker",
+  "version": "1.0.0",
+  "description": "Open source project to build automate videos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelmazzoli/bot-video-maker.git"
+  },
+  "keywords": [
+    "bot",
+    "video maker"
+  ],
+  "author": "Rafael Mazzoli Camargo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelmazzoli/bot-video-maker/issues"
+  },
+  "homepage": "https://github.com/rafaelmazzoli/bot-video-maker#readme"
+}
