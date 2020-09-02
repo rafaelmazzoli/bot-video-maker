@@ -2,7 +2,9 @@ const readLine = require("readline-sync");
 const robots = { text: require("./textRobot") };
 
 async function start() {
-  const state = {};
+  const state = {
+    maximumSentences: 7,
+  };
 
   state.searchTerm = askAndReturnSearchTerm();
   state.language = askAndReturnLanguage();
@@ -47,7 +49,7 @@ async function start() {
     return selectedPrefixText;
   }
 
-  // console.log(state);
+  console.log(state.sentences);
 }
 
 start();
