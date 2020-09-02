@@ -5,7 +5,8 @@ async function start() {
   const state = {};
 
   state.searchTerm = askAndReturnSearchTerm();
-  state.prefix = askAndReturnPrefix();
+  state.language = askAndReturnLanguage();
+  state.prefix = askAndReturnPrefix(state.language);
 
   await robots.text(state);
 
@@ -13,22 +14,40 @@ async function start() {
     return readLine.question("Type a Wikipedia search term: ");
   }
 
-  function askAndReturnPrefix() {
-    const prefixes = ["Who is", "What is", "The history of"];
+  function askAndReturnLanguage() {
+    const languages = ["pt", "en"];
+    const selectedLanguageIndex = readLine.keyInSelect(
+      languages,
+      "Choose the Language of the Search: "
+    );
+
+    //If user Cancel operation
+    if (selectedLanguageIndex === -1) process.exit();
+
+    const selectedLanguageText = languages[selectedLanguageIndex];
+
+    return selectedLanguageText;
+  }
+
+  function askAndReturnPrefix(language = "en") {
+    const prefixes = {
+      pt: ["Quem é", "O que é", "A história do(a)"],
+      en: ["Who is", "What is", "The history of"],
+    };
     const selectedPrefixIndex = readLine.keyInSelect(
-      prefixes,
+      prefixes[language],
       "Choose one option: "
     );
 
     //If user Cancel operation
     if (selectedPrefixIndex === -1) process.exit();
 
-    const selectedPrefixText = prefixes[selectedPrefixIndex];
+    const selectedPrefixText = prefixes[language][selectedPrefixIndex];
 
     return selectedPrefixText;
   }
 
-  //   console.log(state);
+  // console.log(state);
 }
 
 start();
