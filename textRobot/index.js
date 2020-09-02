@@ -12,7 +12,14 @@ module.exports = async function robot(content) {
     const wikipediaAlgorithm = algorithmiaAuthenticated.algo(
       "web/WikipediaParser/0.1.2"
     );
-    const wikipediaResponse = await wikipediaAlgorithm.pipe(content.searchTerm);
+    console.log({
+      lang: content.language,
+      articleName: content.searchTerm,
+    });
+    const wikipediaResponse = await wikipediaAlgorithm.pipe({
+      lang: content.language,
+      articleName: content.searchTerm,
+    });
     const wikipediaContent = wikipediaResponse.get();
     content.souceContentOriginal = wikipediaContent.content;
   }
