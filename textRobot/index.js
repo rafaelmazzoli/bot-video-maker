@@ -4,12 +4,14 @@ const {
 } = require("../credentials/algorithmia.json");
 const sentenceBoundaryDetection = require("sbd");
 const { apikey: watsonApiKey } = require("../credentials/watson-nlu.json");
-const NaturalLanguageUnderstantingV1 = require("watson-developer-cloud/natural-language-understanding/v1");
+const NaturalLanguageUnderstandingV1 = require("ibm-watson/natural-language-understanding/v1");
+const { IamAuthenticator } = require("ibm-watson/auth");
 
-const nlu = new NaturalLanguageUnderstantingV1({
-  iam_apikey: watsonApiKey,
+const nlu = new NaturalLanguageUnderstandingV1({
+  authenticator: new IamAuthenticator({ apikey: watsonApiKey }),
   version: "2018-04-05",
-  url: "https://gateway.watsonplatform.net/natural-language-understanding/api/",
+  serviceUrl:
+    "https://gateway.watsonplatform.net/natural-language-understanding/api/",
 });
 
 const robots = {
@@ -101,7 +103,9 @@ module.exports = async function robot() {
         },
         (err, response) => {
           if (err) throw err;
-          const keywords = response.keywords.map((keyword) => keyword.text);
+          const keywords = response.result.keywords.map(
+            (keyword) => keyword.text
+          );
           resolve(keywords);
         }
       );
