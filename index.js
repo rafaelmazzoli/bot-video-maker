@@ -9,7 +9,7 @@ async function start() {
   await robots.text();
 
   const content = robots.state.load();
-  console.dir(content, { depth: null });
+  console.dir(content.sentences, { depth: null });
 }
 
 start();
