@@ -4,6 +4,12 @@ credentials/
 #NodeJs
 package-lock.json
 
+#Images
+imageRobot/images/*.png
+
+#State
+stateRobot/content.json
+
 # Logs
 logs
 *.log
