@@ -4,8 +4,8 @@ credentials/
 #NodeJs
 package-lock.json
 
-#Images
-imageRobot/images/*.png
+#Conteúdo
+content/
 
 #State
 stateRobot/content.json

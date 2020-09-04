@@ -23,6 +23,7 @@
   "homepage": "https://github.com/rafaelmazzoli/bot-video-maker#readme",
   "dependencies": {
     "algorithmia": "^0.3.10",
+    "gm": "^1.23.1",
     "googleapis": "^59.0.0",
     "ibm-watson": "^5.7.0",
     "image-downloader": "^4.0.1",
